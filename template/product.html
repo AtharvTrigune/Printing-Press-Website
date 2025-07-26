@@ -1,0 +1,234 @@
+{% extends "base.html" %} {% load static %} {% block main %}
+
+<!-- Bootstrap Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+/>
+
+<style>
+  /* General Page Styling */
+  body {
+    background-color: #f8f9fa;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Container Adjustments */
+  .container {
+    margin-top: 40px;
+  }
+
+  /* Product Card */
+  .card {
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  /* Image Styling */
+  /* Image Styling */
+  #wo {
+    width: 100%; /* Makes it responsive */
+    max-width: 250px; /* Restricts max size */
+    height: 200px; /* Fixed height */
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Center Image */
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #f4f4f4;
+  }
+
+  /* Card Body Styling */
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Product Title */
+  .card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d35400;
+  }
+
+  /* Product Details */
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  /* Custom Button Styling */
+  .button {
+    position: relative;
+    width: 160px;
+    height: 42px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #28a745;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .button .button__text {
+    flex: 1;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .button .button__icon {
+    width: 45px;
+    height: 100%;
+    background-color: #218838;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .button:hover {
+    background: #218838;
+  }
+
+  .button:hover .button__icon {
+    width: 160px;
+  }
+
+  .button:active {
+    background-color: #1e7e34;
+  }
+
+  /* Bootstrap Button Styling */
+  .btn-custom {
+    width: 160px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+
+  /* Button Spacing */
+  #b1,
+  #add {
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-left: 60px;
+  }
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .footer a {
+    color: #fff;
+  }
+
+  .footer a:hover {
+    color: #ddd;
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      {% if error_msg %}
+      <div class="alert alert-danger">{{ error_msg }}</div>
+      {% endif %} {% if success %}
+      <div class="alert alert-success">{{ success }}</div>
+      {% endif %}
+
+      <div class="card">
+        {% for i in product %}
+        <div class="row g-0">
+          <!-- Image Section -->
+          <div class="col-md-5 image-container">
+            <img
+              src="{{ i.image.url }}"
+              class="img-fluid"
+              alt="Product Image"
+              id="wo"
+            />
+          </div>
+
+          <!-- Product Details Section -->
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="bi bi-info-circle"></i> Product Detail
+              </h5>
+              <hr />
+              <p class="card-text">
+                <strong>Product Name:</strong> {{ i.title }}
+              </p>
+              <p class="card-text">
+                <strong>Category:</strong> {{ i.category }}
+              </p>
+              <p class="card-text"><strong>Price:</strong> ₹{{ i.price }}</p>
+              <p class="card-text">
+                <strong>Description:</strong> {{ i.description }}
+              </p>
+
+              <!-- Buttons -->
+              <a href="/addtocart/{{ i.id }}">
+                <button type="button" class="button" id="add">
+                  <span class="button__text"></span>
+                  <span class="button__icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke="currentColor"
+                      height="24"
+                      fill="none"
+                      class="svg"
+                    >
+                      <line y2="19" y1="5" x2="12" x1="12"></line>
+                      <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                  </span>
+                </button>
+              </a>
+
+              <a href="/cart">
+                <button type="button" class="btn btn-danger btn-custom" id="b1">
+                  <i class="bi bi-cart-fill"></i> View Cart
+                </button>
+              </a>
+
+              <a href="/">
+                <button type="button" class="btn btn-danger btn-custom" id="b1">
+                  <i class="bi bi-shop"></i> Shop More
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0 m-0">
+  /* General Styling */
+  body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+  }
+
+  .container {
+      padding: 50px 0;
+  }
+
+  /* Section Header */
+  .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #d35400;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+  }
+
+  /* Wedding Card Styling */
+  .card {
+      border-radius: 12px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+  }
+
+  .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .card img {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+  }
+
+  .card:hover img {
+      transform: scale(1.05);
+  }
+
+  .card-body {
+      padding: 20px;
+      text-align: center;
+  }
+
+  /* Product Title */
+  .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+  }
+
+  /* Product Description */
+  .card-text {
+      font-size: 14px;
+      color: #555;
+      height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
+  /* Price Tag */
+  .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d9534f;
+      margin: 10px 0;
+  }
+
+  /* Buttons */
+  .btn-custom {
+      width: 140px;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+  }
+
+  .btn-primary {
+      background-color: #3498db;
+      border: none;
+  }
+
+  .btn-primary:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+  }
+
+  .btn-secondary {
+      background-color: #7f8c8d;
+      border: none;
+  }
+
+  .btn-secondary:hover {
+      background-color: #5d6d7e;
+      transform: scale(1.05);
+  }
+
+  /* Responsive Grid */
+  @media (max-width: 768px) {
+      .card {
+          margin-bottom: 20px;
+      }
+  }
+
+  /* Footer */
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 30px;
+  }
+
+  .footer a {
+      color: #fff;
+      text-decoration: none;
+  }
+
+  .footer a:hover {
+      color: #ddd;
+  }
+
+</style>
+
+<div class="container">
+    <h1 class="section-title">Wedding Cards</h1>
+    <div class="row">
+        {% for product in products %}
+            {% if product.category == 'wedding_card' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if error_msg %}
+                            <div class="alert alert-danger">{{ error_msg }}</div>
+                        {% endif %}
+                        {% if success %}
+                            <div class="alert alert-success">{{ success }}</div>
+                        {% endif %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="price">Price: ₹{{ product.price }}</p>
+                            <a href="/product_details/{{ product.id }}/">
+                                <button class="btn btn-primary btn-custom">View Details</button>
+                            </a>
+                            <a href="/service">
+                                <button class="btn btn-secondary btn-custom">Shop More</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock main %}

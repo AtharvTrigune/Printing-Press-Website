@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+<style>
+  /* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    background-image: url(static/images/service.svg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+/* Service Cards */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    background: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Links */
+#p1, #w1 {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+#p1:hover, #w1:hover {
+    color: #007bff;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    border-top: 3px solid #ffcc00;
+}
+
+.footer a {
+    color: #ffcc00;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: #ff9966;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+</style>
+
+<<div class="container py-5">
+  <h1 class="text-center mb-5">Offset Printing Services</h1>
+
+  <div class="row">
+      <!-- Pamplates -->
+      <div class="col-md-4">
+          <div class="card">
+              <a href="/pamplate"><img src="{% static 'images/pro.avif' %}" class="card-img-top" alt="Pamplates" style="height: 260px;"></a>
+              <div class="card-body">
+                  <h5 class="card-title" id="p1">Pamplates</h5>
+                  <p class="card-text">High-quality Pamplates that make a lasting impression.</p>
+                  <a href="/pamplate" class="btn btn-primary">View Details</a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Wedding Cards -->
+      <div class="col-md-4">
+          <div class="card">
+              <img src="{% static 'images/weeding.avif' %}" class="card-img-top" alt="Wedding Cards" style="height: 290px;">
+              <div class="card-body">
+                  <a href="/weeding" id="w1"><h5 class="card-title">Wedding Cards</h5></a>
+                  <p class="card-text">Very elegant and fine designs.</p>
+                  <a href="/weeding" class="btn btn-primary">View Details</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="text-center mt-4">
+      <a href="/service" class="btn btn-secondary">Back to Services</a>
+  </div>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+  <style>
+    /* Centered Heading */
+.hii {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Card Styling */
+.card {
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Card Body */
+.card-body {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* Price Details Box */
+.col-md-3 {
+    padding: 20px;
+    border-radius: 10px;
+    background: #f8f9fa;
+}
+
+/* Buttons */
+.btn-danger, .btn-warning, .btn-success {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Quantity Section */
+p label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-9, .col-md-3 {
+        width: 100%;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+
+  </style>
+
+
+<div class="row ">
+  <h1 class="hii">{{text}}</h1>
+    <div class="col-md-9">
+        
+        
+
+        <div class="card mb-3" style="max-width: 900px;">
+          {% for cart in carts %}
+            <div class="row g-0" id="c1">
+              {% comment %} <div class="col-md-4">
+                <img src="{{cart.pid.pimage.url}}" class="img-fluid rounded-start" alt="something went wrong" id="wo">
+              </div> {% endcomment %}
+              <div class="col-md-8" align="left" id="c1">
+                <div class="card-body">
+                  <h5 class="card-title">Product Detail</h5><hr>
+                  <p class="card-text"><strong>Product Name:</strong>{{cart.pid.title}}</p>
+                  {% comment %} {% if cart.pid.category == 1 %}
+                  <p class="card-text">  <strong>Category:</strong>  Shoes  </p>
+                  {% elif cart.pid.category == 2 %}
+                  <p class="card-text">  <strong>Category:</strong>  Mobile  </p>
+                  {% elif cart.pid.category == 3 %}
+                  <p class="card-text">  <strong>Category:</strong>  Cloths  </p>
+                  {% elif cart.pid.category == 4 %}
+                  <p class="card-text">  <strong>Category:</strong>  Watch  </p>
+                  {% endif %} {% endcomment %}
+                  <p class="card-text"><strong>Price:</strong>{{cart.pid.price}}</p>
+                  <p class="card-text"><strong>Description:</strong>{{cart.pid.description}}</p>
+                  <!-- here we have added the path for the updation of the quantity -->
+                  <p><label for="qty">Quantity</label><a href="/updateqty/1/{{cart.id}}/"><button class="btn btn-danger">+</button></a><input type="number" value="{{cart.qty}}"><a href="/updateqty/0/{{cart.id}}/"><button class="btn btn-danger">-</button></a></p> 
+
+                  {% comment %} <button type="button" class="btn btn-danger">Buy Now</button> {% endcomment %}
+                  <a href="/delete/{{cart.id}}"><button type="button" class="btn btn-warning">Remove</button></a>
+                  
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+    <!-- if ther are no items in cart it will wont display -->
+    {% if items >= 1 %}     <!--This command is for if the product are 1 or greater than 1 it will display if less than 1 it wont display-->
+    <div class="col-md-3 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <h3>Price Details</h3><hr>
+        <p><strong>Total Items:</strong>{{items}}</p>
+        <p><strong>Total amount:</strong>{{total}}</p>
+        
+        <a href="/placeorder"><button type="button" class="btn btn-success">Buy Now</button></a>
+       
+    </div>
+    {% endif %}
+    <!-- till this wont display -->
+</div>
+
+
+{% endblock main %}

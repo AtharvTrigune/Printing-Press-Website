@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+<style>
+  /* Global Styles */
+  body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      background-image: url(static/images/service.svg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #333;
+  }
+  
+  /* Heading Styles */
+  h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      color: black;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 1s ease-in-out;
+  }
+  
+  /* Service Cards */
+  .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      overflow: hidden;
+  }
+  
+  .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card img {
+      border-radius: 12px 12px 0 0;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover img {
+      transform: scale(1.05);
+  }
+  
+  .card-body {
+      background: #ffffff;
+      text-align: center;
+      padding: 20px;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      font-weight: bold;
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+  }
+  
+  .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      font-weight: bold;
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .btn-secondary:hover {
+      background-color: #545b62;
+      transform: scale(1.05);
+  }
+  
+  /* Footer */
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 16px;
+      border-top: 3px solid #ffcc00;
+  }
+  
+  .footer a {
+      color: #ffcc00;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+  }
+  
+  .footer a:hover {
+      color: #ff9966;
+  }
+  
+  /* Animations */
+  @keyframes fadeInDown {
+      0% {
+          opacity: 0;
+          transform: translateY(-50px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  @keyframes fadeIn {
+      0% {
+          opacity: 0;
+          transform: translateY(50px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+      h1 {
+          font-size: 2.2rem;
+      }
+  }
+  
+  @media (max-width: 768px) {
+      h1 {
+          font-size: 2rem;
+      }
+  
+      .card {
+          margin-bottom: 30px;
+      }
+  }
+  
+</style>
+
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">Our Printing Services</h1>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/ass.jpg' %}" class="card-img-top" alt="Offset Printing">
+          <div class="card-body">
+            <h5 class="card-title">Offset Printing</h5>
+            <p class="card-text">Reliable and high-quality printing for large volumes.</p>
+            <a href="/cat" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      
+      {% comment %} <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/digi.jpg' %}" class="card-img-top" alt="Digital Printing">
+          <div class="card-body">
+            <h5 class="card-title">Digital Printing</h5>
+            <p class="card-text">Perfect for short runs with fast turnaround.</p>
+            <a href="/cat2" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div> {% endcomment %}
+
+      {% comment %} <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/flex.jpg' %}" class="card-img-top" alt="Screen Printing" style="width: 400px;">
+          <div class="card-body">
+            <h5 class="card-title">Screen Printing</h5>
+            <p class="card-text">Ideal for printing on various materials such as fabrics, metals, and plastics.</p>
+            <a href="/cat3" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div> {% endcomment %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/visiting.jpg' %}" class="card-img-top" alt="Screen Printing" style="height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">Visiting Card</h5>
+            <p class="card-text">Printing Your Bussiness Cards.</p>
+            <a href="/cat4" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+{% endblock main %}

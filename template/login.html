@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<style>
+  /* Glassmorphism Effect */
+  .glass {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      {% comment %} background-image: url("{% static 'images/login.avif' %}"); {% endcomment %}
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+  }
+
+  /* Form Styling */
+  .login-form {
+      max-width: 350px;
+      margin: 40px auto;
+  }
+
+  .form-control {
+      border-radius: 25px;
+      padding: 12px;
+      font-size: 1rem;
+  }
+
+  label {
+      font-weight: 600;
+      color: #333;
+  }
+
+  /* Button Styling */
+  button {
+      background: transparent;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 2px solid white;
+      border-radius: 25px;
+      color: black;
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+  }
+
+  button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0%;
+      height: 100%;
+      background: rgba(255, 0, 0, 0.8);
+      transition: width 0.4s ease-in-out;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+  }
+
+  button:hover {
+      color: white;
+      border-color: red;
+  }
+
+  button:hover::before {
+      width: 120%;
+  }
+
+  /* Icon Styling */
+  #l1 {
+      display: block;
+      margin: 10px auto;
+  }
+
+  /* Forgot Password */
+  .text-center a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+      transition: color 0.3s ease;
+  }
+
+  .text-center a:hover {
+      color: red;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .glass {
+          padding: 25px;
+      }
+
+      .login-form {
+          max-width: 100%;
+      }
+
+      button {
+          font-size: 14px;
+      }
+  }
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #ddd;
+}
+
+</style>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6">
+        <div class="glass">
+            <h3>Welcome to Subhadra Printers</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="black" class="bi bi-person-bounding-box" viewBox="0 0 16 16" id="l1">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5.5 0 0 1-1 0v-3a.5.5.5 0 0 0-.5-.5h-3a.5.5.5 0 0 1-.5-.5M.5 11a.5.5.5 0 0 1 .5.5v3a.5.5.5 0 0 0 .5.5h3a.5.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5.5 0 0 1 .5-.5m15 0a.5.5.5 0 0 1 .5.5v3a1.5 1.5.5 0 0 1-1.5 1.5h-3a.5.5.5 0 0 1 0-1h3a.5.5.5 0 0 0 .5-.5v-3a.5.5.5 0 0 1 .5-.5"/>
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            </svg>
+
+            <form class="login-form" method="POST">
+                {% if error_msg %}
+                    <div class="alert alert-danger">{{ error_msg }}</div>
+                {% endif %}
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username" name="uname" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" name="pass" />
+                </div>
+
+                <button type="submit">
+                    <span>LOGIN</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

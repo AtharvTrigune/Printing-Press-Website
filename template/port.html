@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+<style>
+  /* General Styling */
+  body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      {% comment %} background: url("{% static 'images/port.svg' %}") no-repeat center center fixed; {% endcomment %}
+      background-size: cover;
+      color: #333;
+  }
+
+  /* Customer Testimonials Section */
+  .customer-info {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .customer-info:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .customer-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ddd;
+      transition: transform 0.3s ease-in-out;
+  }
+
+  .customer-info:hover .customer-image {
+      transform: scale(1.1);
+  }
+
+  .customer-name {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-top: 10px;
+      color: #222;
+  }
+
+  .customer-testimonial {
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+      margin-top: 10px;
+  }
+
+  /* Section Title */
+  .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeInDown 1s ease-in-out;
+  }
+
+  /* Footer */
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 16px;
+  }
+
+  .footer a {
+      color: #ffcc00;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+  }
+
+  .footer a:hover {
+      color: #ff9966;
+  }
+
+  /* Animations */
+  @keyframes fadeInDown {
+      0% {
+          opacity: 0;
+          transform: translateY(-30px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+      .customer-name {
+          font-size: 1.1rem;
+      }
+
+      .customer-testimonial {
+          font-size: 0.9rem;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .section-title {
+          font-size: 2rem;
+      }
+
+      .customer-info {
+          padding: 15px;
+      }
+
+      .customer-name {
+          font-size: 1rem;
+      }
+  }
+</style>
+
+<!-- Customer Testimonials Section -->
+<div class="container mt-5">
+    <h2 class="section-title">What Our Customers Say</h2>
+    
+    <div class="row">
+      <!-- Customer 1 -->
+      <div class="col-md-4">
+        <div class="customer-info">
+          <img src="{% static 'images/prac.jpg' %}" alt="Customer 1" class="img-fluid customer-image">
+          <p class="customer-name">Prakruti Health Care</p>
+          <p class="customer-testimonial">"Subhadra Printers provides exceptional print quality and timely delivery. Highly recommended!"</p>
+        </div>
+      </div>
+
+      <!-- Customer 2 -->
+      <div class="col-md-4">
+        <div class="customer-info">
+          <img src="{% static 'images/st.webp' %}" alt="Customer 2" class="img-fluid customer-image">
+          <p class="customer-name">St. Paul School, Satara</p>
+          <p class="customer-testimonial">"The team at Subhadra Printers is professional and efficient. Our school prints have never looked better!"</p>
+        </div>
+      </div>
+
+      <!-- Customer 3 -->
+      <div class="col-md-4">
+        <div class="customer-info">
+          <img src="{% static 'images/satara.jpg' %}" alt="Customer 3" class="img-fluid customer-image">
+          <p class="customer-name">Satara District Cricket Association </p>
+          <p class="customer-testimonial">"Reliable and high-quality printing services. We are very satisfied with their work!"</p>
+        </div>
+      </div>
+
+      <!-- Customer 4 -->
+      <div class="col-md-4">
+        <div class="customer-info">
+          <img src="{% static 'images/mrf.png' %}" alt="Customer 4" class="img-fluid customer-image">
+          <p class="customer-name">MRF Tyre Company, Satara</p>
+          <p class="customer-testimonial">"Great attention to detail and excellent customer service. A trusted printing partner!"</p>
+        </div>
+      </div>
+
+      <!-- Customer 5 -->
+      <div class="col-md-4">
+        <div class="customer-info">
+          <img src="{% static 'images/medi.png' %}" alt="Customer 5" class="img-fluid customer-image">
+          <p class="customer-name">Medical Industry, Satara</p>
+          <p class="customer-testimonial">"Outstanding printing services with high precision. Will definitely use their services again!"</p>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock main %}

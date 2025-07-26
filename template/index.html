@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<style>
+    /* Custom CSS for styling the page */
+
+    /* Navbar Logo */
+    #l1 {
+        height: 55px;
+        margin-left: 120px;
+    }
+    
+    /* Global Link Styles */
+    a {
+        color: black;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    a:hover {
+        color: #ff5733; /* Highlight color */
+    }
+    
+    /* Hero Section */
+    .hero {
+        background-image: url("{% static 'images/mh.avif' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        color: whitesmoke;
+        padding: 100px 0;
+        text-align: center;
+    }
+    
+    /* Dark Gradient Overlay for better text visibility */
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    /* Button Animation */
+    .btn2 {
+        position: relative;
+        display: inline-block;
+        padding: 12px 28px;
+        border: 2px solid #fff;
+        color: black;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 18px;
+        transition: all 0.3s ease-in-out;
+        background-color: transparent;
+        overflow: hidden;
+    }
+    
+    .btn2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        transition: left 0.3s ease-in-out;
+    }
+    
+    .btn2:hover::before {
+        left: 0;
+    }
+    
+    .btn2:hover {
+        color: black;
+        border-color: #fff;
+    }
+    
+    /* Service Cards */
+    .service-card {
+        margin: 30px 0;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .service-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    
+    /* Footer */
+    .footer {
+        background-color: #222;
+        color: white;
+        padding: 25px 0;
+        text-align: center;
+        font-size: 16px;
+        border-top: 3px solid #ff5733;
+    }
+    
+    .footer a {
+        color: #ff5733;
+        font-weight: bold;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    .footer a:hover {
+        color: #ff9966;
+    }
+    
+    /* Text Styling */
+    h1 {
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    /* Smooth Fade-in Animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        #l1 {
+            margin-left: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hero {
+            padding: 60px 0;
+        }
+    
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+    
+        .service-card {
+            margin: 20px 0;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+    
+</style>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Quality Printing Services by Subhadra Printers</h1>
+        <p>We bring your ideas to life with the best printing solutions</p>
+        <!-- {% comment %} <button>
+            <a href="/order" class="btn2"><span class="spn2">Order Here</span></a>
+          </button> {% endcomment %} -->
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="container text-center">
+    <h2 class="my-5">Our Services</h2>
+    <div class="row">
+        <div class="col-md-4 service-card">
+            <div class="card">
+                <img src="{% static 'images/auto.jpg' %}" alt="Service 1" class="card-img-top">
+                <div class="card-body">
+                    <a href="/cat"><h5 class="card-title">Offset Printing</h5></a>
+                    <p class="card-text">High-quality printing for brochures, magazines, and other materials.</p>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-4 service-card">
+            <div class="card" id="c1">
+                <img src="{% static 'images/visiting.jpg' %}" alt="Service 2" class="card-img-top">
+                <div class="card-body">
+                    <a href="/cat4"><h5 class="card-title">Visiting Cards</h5></a>
+                    <p class="card-text">Printing Your Bussiness Cards</p>
+                </div>
+            </div>
+        </div>
+         <!-- <div class="col-md-4 service-card">
+            <div class="card">
+                <img src="{% static 'images/flex.jpg' %}" alt="Service 3" class="card-img-top">
+                <div class="card-body">
+                    <a href="/cat3"><h5 class="card-title">Large Format Printing</h5></a>
+                    <p class="card-text">Perfect for banners, posters, and signage for your business or event.</p>
+                </div> -->
+    </div>
+</section>
+{% endblock main %}

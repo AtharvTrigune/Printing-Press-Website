@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+<style>
+  /* General Styling */
+  body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+  }
+
+  .container {
+      max-width: 1200px;
+  }
+
+  h1 {
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #333;
+  }
+
+  /* Cards Layout */
+  .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease-in-out;
+      height: 100%;
+      overflow: hidden;
+  }
+
+  .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .card img {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+  }
+
+  .card-body {
+      text-align: center;
+      padding: 20px;
+  }
+
+  .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+  }
+
+  .card-text {
+      font-size: 14px;
+      color: #666;
+  }
+
+  .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d9534f;
+      margin-bottom: 15px;
+  }
+
+  /* Buttons */
+  .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+  }
+
+  .btn {
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 15px;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .btn-primary:hover {
+      background-color: #0056b3;
+  }
+
+  .btn-secondary:hover {
+      background-color: #5a6268;
+  }
+
+  /* Footer Styling */
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+  }
+  
+  .footer a {
+      color: #fff;
+      text-decoration: none;
+  }
+  
+  .footer a:hover {
+      color: #ddd;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .card img {
+          height: 180px;
+      }
+      .btn-group {
+          flex-direction: column;
+      }
+  }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Visiting Cards</h1>
+    <div class="row">
+        {% for product in products %}
+            {% if product.category == 'visiting_card' %}
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="price">Price: Rs.{{ product.price }}</p>
+                            <div class="btn-group">
+                                <a href="/product_details/{{product.id}}/" class="btn btn-primary">View Details</a>
+                                <a href="/service" class="btn btn-secondary">Shop More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock main %}

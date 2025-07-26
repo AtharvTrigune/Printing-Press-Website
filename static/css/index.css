@@ -1,0 +1,130 @@
+/* Custom CSS for styling the page */
+
+/* Navbar Logo */
+#l1 {
+    height: 55px;
+    margin-left: 120px;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url("{% static 'images/mh.avif' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    color: whitesmoke;
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Dark Overlay for better text visibility */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent overlay */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Service Cards */
+.service-card {
+    margin: 30px 0;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+    font-size: 16px;
+    border-top: 3px solid #ff5733;
+}
+
+.footer a {
+    color: #ff5733;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: #ff9966;
+}
+
+/* Text Styling */
+h1 {
+    color: red;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    #l1 {
+        margin-left: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .service-card {
+        margin: 20px 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
